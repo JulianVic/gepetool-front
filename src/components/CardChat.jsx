@@ -12,7 +12,9 @@ const CardChat = () => {
             <div className="flex-1">
               <h2 className="text-lg font-semibold">Nobody</h2>
               <p className="text-gray-600">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam quo facilis reiciendis est cupiditate. Esse minus porro autem iusto quam!
+                {
+                  "I'm nobody! Who are you? Are you nobody, too? Then there's a pair of us — don't tell! They'd banish us, you know."
+                }
               </p>
             </div>
           </div>
