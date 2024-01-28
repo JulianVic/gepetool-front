@@ -1,11 +1,26 @@
-import { useState } from "react";
-const CardChat = ({ key, name, description, id, setChannel }) => {
+import socket from "../socket/socket.route";
+
+const CardChat = ({ key, name, description, id, channel, setChannel, setMessages }) => {
 
   const handleClick = () => {
+    
+    if(channel){
+      socket.emit("leaveChannel", {
+        channelID: channel.id,
+        id: socket.id,
+      });
+    }
+
     setChannel({ name, description, id });
+    setMessages([]);
+
+    socket.emit("joinChannel", {
+      channelID: id,
+      id: socket.id,
+    });
+
+
   };
-  //me quedé en empezar a hacer los rooms al crear los canales
-  
 
   return (
     <div
