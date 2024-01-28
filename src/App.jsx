@@ -1,42 +1,34 @@
 import Sidebar from "./components/Sidebar";
 import MainChat from "./components/MainChat";
-import LoginCard from "./components/LoginCard";
+import FirstOfAll from "./components/FirstOfAll";
 import ModalCreateChannel from "./components/ModalCreateChannel";
-
-import { useEffect, useState } from "react";
-import socket from "./socket/socket.route";
+import { useState } from "react";
 
 const App = () => {
-  const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
   const [modalCreateChannel, setModalCreateChannel] = useState(false);
-  const [chat, setChat] = useState(null);
-
-  useEffect(() => {
-    socket.on("msg", receiveMessage);
-
-    return () => {
-      socket.off("msg", receiveMessage);
-    };
-  }, []);
-
-  const receiveMessage = (msg) => {
-    setMessages((state) => [...state, msg]);
-  };
+  const [channel, setChannel] = useState(null);
+  const [messages, setMessages] = useState([]);
 
   return (
     <>
       <div className="flex h-screen overflow-hidden">
-        {/* <LoginCard /> */}
         <Sidebar
           setModalCreateChannel={setModalCreateChannel}
-        />
-        <MainChat
-          message={message}
-          messages={messages}
-          setMessage={setMessage}
+          channel={channel}
+          setChannel={setChannel}
           setMessages={setMessages}
         />
+        {
+          channel ? (
+            <MainChat
+              messages={messages}
+              setMessages={setMessages}
+              channel={channel}
+            />
+          ) : (
+            <FirstOfAll />
+          )
+        }
         {modalCreateChannel && (
           <ModalCreateChannel setModalCreateChannel={setModalCreateChannel} />
         )}

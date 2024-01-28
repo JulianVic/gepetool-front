@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import clienteAxios from "../config/axios";
 import Swal from "sweetalert2";
 const ModalCreateChannel = ({ setModalCreateChannel }) => {
@@ -22,7 +22,7 @@ const ModalCreateChannel = ({ setModalCreateChannel }) => {
     };
 
     try{
-        const res = await clienteAxios.post("/channel/create", dataToSend);
+        const res = await clienteAxios.post("/channels/", dataToSend);
         const status = res.status;
         const message = !status === 200 ? "Something went wrong!" : "Channel created!";
         const icon = !status === 200 ? "error" : "success";

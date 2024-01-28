@@ -1,19 +1,20 @@
+import { useState } from "react";
+import socket from "../socket/socket.route";
+const Input = ({messages, setMessages, channel}) => {
+  const [message, setMessage] = useState(""); 
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-import socket from "../socket/socket.route"
+    socket.emit("sendMessage", {
+      channelID: channel.id,
+      body: message,
+      sender: socket.id,
+      isAuthor: true,
+    });
 
-const Input = ({message, messages, setMessage, setMessages}) => {
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const newMessage = {
-          body: message,
-          from: "Me",
-        };
-        setMessages([...messages, newMessage]);
-        socket.emit("msg", message);
-        setMessage("");
-    };
-
+    setMessage("");
+  };
+    
   return (
     <div>
       <form onSubmit={handleSubmit} className="bg-white border-t border-gray-300 p-4 absolute bottom-0 w-3/4">
