@@ -24,13 +24,15 @@ const App = () => {
               messages={messages}
               setMessages={setMessages}
               channel={channel}
+              setChannel={setChannel}
             />
           ) : (
             <FirstOfAll />
           )
         }
         {modalCreateChannel && (
-          <ModalCreateChannel setModalCreateChannel={setModalCreateChannel} />
+          <ModalCreateChannel setModalCreateChannel={setModalCreateChannel} 
+          />
         )}
         
       </div>

@@ -48,8 +48,8 @@ const NameContact = ({ channel }) => {
   };
 
   return (
-    <div className="flex items-center mb-4  p-2 rounded-md justify-between ">
-      <div className="bg-white p-4 text-gray-700">
+    <div className="flex items-center mb-4 p-2 justify-between bg bg-indigo-200  ">
+      <div className="p-4 text-gray-700">
         <h1 className="text-2xl font-semibold">{channel.name}</h1>
       </div>
 
@@ -58,7 +58,7 @@ const NameContact = ({ channel }) => {
         className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
         onClick={handleDelete}
         >
-          Eliminar
+          Remove
         </button>
       </div>
     </div>

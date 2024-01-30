@@ -4,7 +4,7 @@ const CreateChannelButton = ({ setModalCreateChannel }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full mb-3">
+    <div className="flex flex-col items-center justify-center w-full mb-3 ">
       <button
         className="w-full flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-semibold p-2 rounded-md"
         onClick={handleClick}

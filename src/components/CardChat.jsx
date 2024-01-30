@@ -1,7 +1,9 @@
 import socket from "../socket/socket.route";
 
 const CardChat = ({ key, name, description, id, channel, setChannel, setMessages }) => {
-
+  const dynamicText = name;
+  const dynamicTextShort = dynamicText.substring(0, 4);
+  
   const handleClick = () => {
     
     if(channel){
@@ -19,7 +21,6 @@ const CardChat = ({ key, name, description, id, channel, setChannel, setMessages
       id: socket.id,
     });
 
-
   };
 
   return (
@@ -29,7 +30,7 @@ const CardChat = ({ key, name, description, id, channel, setChannel, setMessages
     >
       <div className="w-12 h-12 bg-gray-300 rounded-full mr-3">
         <img
-          src="https://placehold.co/200x/2e83ad/ffffff.svg?text=ilyk&font=Lato"
+          src={`https://placehold.co/200x/2e83ad/ffffff.svg?text=${encodeURIComponent(dynamicTextShort)}&font=Roboto`}
           alt="User Avatar"
           className="w-12 h-12 rounded-full"
         />
